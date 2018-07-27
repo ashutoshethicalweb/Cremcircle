@@ -1,0 +1,57 @@
+﻿@if ((GenFx.GetCurrentUserDetails("RoleID") == "1") || (GenFx.GetCurrentUserDetails("RoleID") == "2"))
+{
+    <ul class="nav nav-pills nav-stacked">
+        @if (GenFx.IsUserAuthorized("Index", "Home"))
+        {
+            <li class="@GenFx.MakeActive("", "Home")"><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+        }
+
+        @*@if (GenFx.IsUserAuthorized("Index", "Customers"))
+            {
+                <li class="@GenFx.MakeActive("", "Customers")"><a href="@Url.Action("Index", "Customers")"><i class="fa fa-users"></i> <span>Prospect / Customers</span></a></li>
+            }
+
+            @if (GenFx.IsUserAuthorized("ViewPolicy", "InsuranceTypes"))
+            {
+                <li class="@GenFx.MakeActive("ViewPolicy", "InsuranceTypes")"><a href="@Url.Action("ViewPolicy", "InsuranceTypes")"><i class="fa fa-shield"></i> <span>Insurance Policies</span></a></li>
+            }*@
+
+        @if (GenFx.IsUserAuthorized("", "Users,Roles,UserLogs,SecurityTemplates"))
+        {
+            <li class="parent @GenFx.MakeActive("", "Users,Roles,UserLogs,SecurityTemplates")">
+                <a href=""><i class="fa fa-users"></i> <span>Roles/Users</span></a>
+                <ul class="children">
+                    @if (GenFx.IsUserAuthorized("Index", "Users"))
+                    {
+                        <li class="@GenFx.MakeActive("", "Users")"><a href="@Url.Action("Index", "Users")">Users</a></li>
+                    }
+                    @if (GenFx.IsUserAuthorized("Index", "Roles"))
+                    {
+                        <li class="@GenFx.MakeActive("", "Roles")"><a href="@Url.Action("Index", "Roles")">Roles</a></li>
+                    }
+                    @if (GenFx.IsUserAuthorized("Index", "UserLogs"))
+                    {
+                        <li class="@GenFx.MakeActive("", "UserLogs")"><a href="@Url.Action("Indext", "UserLogs")">User Logs</a></li>
+                    }
+                    @if (GenFx.IsUserAuthorized("Index", "SecurityTemplates"))
+                    {
+                        <li class="@GenFx.MakeActive("", "SecurityTemplates")"><a href="@Url.Action("Index", "SecurityTemplates")">Security Templates</a></li>
+                    }
+                </ul>
+            </li>
+        }
+
+
+       
+
+
+
+    </ul>
+
+
+
+}
+else
+{
+
+}

@@ -1,0 +1,223 @@
+﻿@model Cremcircle.Models.RegisterViewModel
+@using Cremcircle.Models
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<section>
+    <div class="panel panel-signin">
+        <div class="panel-body">
+            <br />
+            <h4 class="text-center mb5">Sign Up to your account</h4>
+            
+
+            <div class="mb30"></div>
+
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @role = "form", @id = "desk", @class = "cus_form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+                        <div class="form-group col_full mb5">
+
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "First Name" } })
+
+
+                         @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col_full mb5">
+
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Last Name" } })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col_full mb5">
+
+                            @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address" } })
+
+                          @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                        </div>
+
+
+                        <div class="form-group col_full mb5">
+
+
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", maxlength = "10", @placeholder = "Password" } })
+
+
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group col_full mb5">
+
+
+                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", maxlength = "10", @placeholder = "Confirm Password" } })
+
+
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+
+
+
+                        <div class="form-group col_full mb5">
+
+
+                            @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control", maxlength = "10", @placeholder = "Mobile No" } })
+
+
+                          @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                        </div>
+
+
+
+
+                        <div class="form-group col_full mb5">
+                            @*@Html.LabelFor(model => model.RoleID,"You are", htmlAttributes: new { @class = "control-label" })*@
+                            @Html.DropDownList("UserAgeDescriptionID", null, "Select your Age", htmlAttributes: new { @class = "form-control", @placeholder = "Age" })
+
+                            @Html.ValidationMessageFor(model => model.UserAgeDescriptionID, "", new { @class = "text-danger" })
+                        </div>
+
+
+                        <div class="form-group col_full mb5">
+                            @*@Html.LabelFor(model => model.RoleID,"You are", htmlAttributes: new { @class = "control-label" })*@
+                            @Html.DropDownList("RoleID", null, "Select your are", htmlAttributes: new { @class = "form-control", @placeholder = "Role" })
+
+                            @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "text-danger" })
+                        </div>
+
+
+
+                        <div class="form-group col_full mb5">
+
+                            @Html.DropDownList("CountryID", null, "Select Country", htmlAttributes: new { @class = "form-control", @placeholder = "Country" })
+
+
+
+                        @Html.ValidationMessageFor(model => model.CountryID, "", new { @class = "text-danger" })
+                        </div>
+
+                        @Html.HiddenFor(model=>model.capchadata)
+                        
+
+                        <div class="form-group col_full mb5">
+                            <label class="col-xs-2 control-label" id="captchaOperation" style="width:30%;height:35px;float:left"></label>
+                            @Html.EditorFor(model => model.Captcha, new { htmlAttributes = new { @class = "form-control", @style = "width:70%;", @placeholder = "Enter Security Code*" } })
+
+
+                            <div class="help-block with-errors"><ul class="list-unstyled"><li class="capchaclass">@Html.ValidationMessageFor(model => model.Captcha, "", new { @class = "text-danger" })</li></ul></div>
+                        </div>
+
+                        <div class="clearfix">
+                            <div class="pull-left">
+                                <div class="ckbox ckbox-primary mt10">
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div class="pull-left">
+                                <button type="submit" Id="lastsubmit" class="btn btn-success">Sign Up <i class="fa fa-angle-right ml5"></i></button>
+                            </div>
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-success cancelRegistration">Cancel<i class="fa fa-angle-right ml5"></i></button>
+                            </div>
+                        </div>
+
+
+
+            }
+
+         
+        </div>
+    </div>
+    </section>
+    @*@section Styles {
+
+
+        }
+        }*@
+    @section Scripts {
+
+        @Scripts.Render("~/bundles/jqueryval")
+
+
+
+      <script>
+              $(document).ready(function () {
+                  // Generate a simple captcha
+                  function randomNumber(min, max) {
+                      return Math.floor(Math.random() * (max - min + 1) + min);
+                  }
+
+                  function generateCaptcha() {
+                      $('#captchaOperation').html([randomNumber(1, 10), '+', randomNumber(1, 10), '='].join(' '));
+
+                  }
+
+
+
+
+                  $(".cancelRegistration").click(function () {
+
+                      location.reload(true);
+                  });
+
+
+                  generateCaptcha();
+                  var value = 0;
+
+
+
+
+
+                  if (@ViewBag.Captcha=="false")
+                  {
+                      alert("dd");
+                      $("#Captcha").addClass("input-validation-error");
+                      $(".capchaclass").html("<span class='field-validation-error text-danger' data-valmsg-for='Captcha' data-valmsg-replace='true'>Please enter valid captcha.</span>");
+
+                      return false;
+                  }
+
+
+                  $("#lastsubmit").click(function () {
+
+
+                      var items = $('#captchaOperation').html().split(' ');
+
+                      var sum = parseInt(items[0]) + parseInt(items[2]);
+
+                      $("#capchadata").val(sum);
+                      alert($("#capchadata").val());
+
+                      if ($("#Captcha").val() != "") {
+
+                          value = parseInt($("#Captcha").val());
+
+                          if (value != sum) {
+                              $("#Captcha").addClass("input-validation-error");
+                              $(".capchaclass").html("<span class='field-validation-error text-danger' data-valmsg-for='Captcha' data-valmsg-replace='true'>Please enter valid captcha.</span>");
+
+                              return false;
+                          }
+                          else {
+                              return true;
+                          }
+                      }
+
+
+
+
+                  });
+
+                  var items = $('#captchaOperation').html().split(' '),
+                      sum = parseInt(items[0]) + parseInt(items[2]);
+                  return value == sum;
+
+
+              });
+
+
+</script>
+    }

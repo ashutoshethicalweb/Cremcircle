@@ -1,0 +1,151 @@
+﻿/* Default Override of everything for g4broker goes here */
+
+/*Default site theme */
+.headerwrapper {
+	background-color: #011838;
+}
+
+.headerwrapper .header-right .btn-group > .btn:focus, .headerwrapper .header-right .btn-group > .btn:active {
+    color: #fff;
+    background-color: rgba(0,0,0,0.3);
+}
+
+
+.leftpanel .nav > li.active > a, .leftpanel .nav > li.active > a:hover {
+    color: #fff;
+    background-color: #011838;
+}
+
+.leftpanel .nav > li > a i {
+    color: #011838;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #011838;
+    border-color: #011838;
+}
+
+body.signin {
+    background-color: #011838;
+}
+
+
+
+/* other styles */
+.leftpanel .profile-left .media-heading {
+    margin-top: 3px;
+}
+
+.ui-datepicker {
+	z-index: 1600 !important; /* has to be larger than 1050 */
+}
+
+.heading { font-size:18px; font-weight:500; }
+
+.control-label { font-weight:bold; }
+.noborderpadding { border:0; border-bottom:1px solid #eeeeee; padding:0 0 5px 0; }
+.hightlight { font-weight:bold; color:#011838; font-size:16px; }
+.highlight-primary { font-weight:bold; color:#011838; } 
+.input-validation-error { border-color:#ff0000; }
+
+/* data tables override */
+.table-responsive { clear:both; }
+table.dataTable thead {
+    background-color: #4E5154;
+}
+div.dataTables_length label select { white-space:nowrap; display:inline-block; }
+.fa.action { color:#1c108c; font-size:16px; }
+.table-action a { color:#011838; }
+.createlink { font-size:16px; }
+.createlink i { color:#1c108c; font-size:18px; }
+
+.textarea600 { max-width:600px; min-height:200px; }
+
+.searchbox { padding-left: 0 !important; padding-right: 0 !important; padding-bottom:10px; padding-top:10px; }
+
+/* Checkbox style override */
+.ckbox input[type=checkbox]:checked + input[type="hidden"] + label:after,
+.ckbox input[type="checkbox"]:checked + label:after  {
+    font-family: 'FontAwesome';
+    content: "\F00C";
+    position: absolute;
+    top: 2.5px;
+    left: 3.5px;
+    display: inline-block;
+    font-size: 11px;
+    width: 16px;
+    height: 16px;
+    color: #fff;
+}
+
+.ckbox-default input[type="checkbox"]:checked + input[type="hidden"] + label::before,
+.ckbox-default input[type="checkbox"]:checked + label:before {
+    border-color: #999;
+}
+
+.ckbox-primary input[type="checkbox"]:checked + input[type="hidden"] + label::before,
+.ckbox-primary input[type="checkbox"]:checked + label:before {
+    border-color: #357EBD;
+    background-color: #011838;
+}
+
+.ckbox-warning input[type="checkbox"]:checked + input[type="hidden"] + label::before,
+.ckbox-warning input[type="checkbox"]:checked + label:before {
+    border-color: #EEA236;
+    background-color: #F0AD4E;
+}
+
+.ckbox-success input[type="checkbox"]:checked + input[type="hidden"] + label::before,
+.ckbox-success input[type="checkbox"]:checked + label:before {
+    border-color: #5cb85c;
+    background-color: #5cb85c;
+}
+
+.ckbox-danger input[type="checkbox"]:checked + input[type="hidden"] + label::before,
+.ckbox-danger input[type="checkbox"]:checked + label:before {
+    border-color: #D43F3A;
+    background-color: #D9534F;
+}
+
+.ckbox label, .rdio label {
+    display: inline;
+}
+
+/* Breadcrumb Policy Steps */
+.stepsnav {
+	height: 35px;
+	background-color: #eee;
+	margin: 0 0;
+	padding: 0;
+}
+
+.stepsnav a { color: #666; text-decoration:none; }
+
+.stepsnav li {
+	float: left;
+	list-style: none;
+	display: inline-block;
+	padding: 8px 15px;
+}
+
+.stepsnav li.active, .stepsnav li.active a {
+	color: #337ab7;
+	font-weight: bold;
+}
+
+.stepsnav li.dividr {
+	float: left;
+	list-style: none;
+	display: inline-block;
+	padding: 8px 2px;
+}
+
+
+.ui-datepicker-prev, .ui-datepicker-next {
+    background-color: #9e9e9e!important;
+}
+
+ol.plcyfrms { font-size:16px; line-height:2; }
+
+.actBtn-group { margin-bottom:0; }
+.actBtn-group .dropdown-toggle { background:transparent; border:0; font-weight:bolder; padding:0 15px; }

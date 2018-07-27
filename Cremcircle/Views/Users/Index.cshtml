@@ -1,0 +1,221 @@
+﻿@model IEnumerable<Cremcircle.Models.User>
+
+@{
+    ViewBag.Title = "Users";
+ 
+}
+
+
+
+    <!-- Modal -->
+ 
+
+
+<div class="mainpanel">
+    <div class="pageheader">
+        <div class="media">
+            <div class="pageicon pull-left">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="media-body">
+                <ul class="breadcrumb">
+                    <li><a href=""><i class="glyphicon glyphicon-home"></i></a></li>
+                    <li><a href="@Url.Action("Index", "Home")">Dashboard</a></li>
+                    <li>Users</li>
+                </ul>
+                <h4>Users</h4>
+              
+
+            </div>
+        </div><!-- media -->
+    </div><!-- pageheader -->
+
+    <div class="contentpanel">
+        <!-- START:// CONTENT GOES HERE -->
+        <p>
+            <a data-original-title="Create New" href="@Url.Action("Create")" data-toggle="tooltip" title="" class="pull-right tooltips createlink"><i class="fa fa-folder-open"></i> Create New</a>
+        </p>
+        <div class="col-sm-offset-6 col-sm-6 col-lg-offset-8 col-lg-4 searchbox">
+            <div class="input-group">
+                <input class="form-control" type="text" id="txtSearch" placeholder="search.." maxlength="100" />
+                <span class="input-group-btn">
+                    <button type="button" id="btnSearch" class="btn btn-info">Go!</button>
+                </span>
+
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table id="recordsetTable" width="100%" class="table table-dark table-bordered table-striped table-hover responsive">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Role.RoleName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SecurityTemplate.SecurityTemplateName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LoginName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LastName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EmailAddress)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsActive)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreatedDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ModifiedDate)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @*@foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Role.RoleName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SecurityTemplate.SecurityTemplateName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LoginName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Password)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FirstName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LastName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserImage)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IsActive)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ModifiedDate)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                </td>
+                            </tr>
+                        }*@
+                </tbody>
+            </table>
+        </div>
+        <!-- END:// CONTENT GOES HERE -->
+    </div><!-- contentpanel -->
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    @section Styles {
+        <!--<link href="~/Content/style.datatables.css" rel="stylesheet">
+        <link href="//cdn.datatables.net/responsive/1.0.1/css/dataTables.responsive.css" rel="stylesheet">-->
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/v/bs/dt-1.10.15/af-2.2.0/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.css" />
+    }
+
+    @section Scripts {
+        <!--<script src="~/Scripts/DataTables/media/js/jquery.dataTables.min.js"></script>
+        <script src="//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+        <script src="//cdn.datatables.net/responsive/1.0.1/js/dataTables.responsive.js"></script>-->
+        <script type="text/javascript" src="//cdn.datatables.net/v/bs/dt-1.10.15/af-2.2.0/cr-1.3.3/fc-3.2.2/fh-3.1.2/kt-2.2.1/r-2.1.1/rg-1.0.0/rr-1.2.0/sc-1.4.2/se-1.2.2/datatables.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function () {
+
+
+            var dtTable = $('#recordsetTable').DataTable({
+                "responsive": true,
+                "lengthMenu": [[10, 25, 50], [10, 25, 50]],
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                //"filter": false, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "dom": '<"top"i>rt<lp><"clear">', //
+                "ajax": {
+                    "url": "@Url.Action("LoadData")",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "RoleName", "name": "RoleName", "autoWidth": true },
+                    { "data": "SecurityTemplateName", "name": "SecurityTemplateName", "autoWidth": true },
+                    { "data": "LoginName", "name": "LoginName", "autoWidth": true },
+                    { "data": "FirstName", "name": "FirstName", "autoWidth": true },
+                    { "data": "LastName", "name": "LastName", "autoWidth": true },
+                    { "data": "EmailAddress", "name": "EmailAddress", "autoWidth": true },
+                    {
+                        "data": "IsActive", "name": "IsActive", "autoWidth": true, "render": function (data, type, row, meta) {
+                            return parseBitValue(data);
+                        }
+                    },
+                    {
+                        "data": "CreatedDate", "name": "CreatedDate", "autoWidth": true, "render": function (data, type, row, meta) {
+                            return parseToDateTime(data);
+                        }
+                    },
+                    {
+                        "data": "ModifiedDate", "name": "ModifiedDate", "autoWidth": true, "render": function (data, type, row, meta) {
+                            return parseToDateTime(data);
+                        }
+                    },
+                    {
+                        "data": "DT_RowId", "name": "DT_RowId", "orderable": false, "autoWidth": true, "render": function (data, type, row, meta) {
+                            return '<a data-original-title="Edit" href="@Url.Action("Edit", "Users")/' + data + '" data-toggle="tooltip" title="" class="tooltips"><i class="fa fa-pencil-square-o action"></i> Edit</a> &nbsp; <a data-original-title="Change Status" href="@Url.Action("ChangeStatus", "Users")/' + data + '" data-toggle="tooltip" title="" class="tooltips"><i class="fa fa-external-link action"></i> Change Status</a>';
+                        }
+                    }
+
+                ]
+            });
+
+            //Apply Custom search on jQuery DataTables here
+            $('#btnSearch').click(function () {
+                //Apply search for Title // DataTable column index 0
+                dtTable.columns(0).search($('#txtSearch').val().trim());
+                //hit search on server
+                dtTable.draw();
+            });
+        });
+        </script>
+    }

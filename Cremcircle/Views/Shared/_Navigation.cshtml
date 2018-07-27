@@ -1,0 +1,8 @@
+﻿@if ((GenFx.GetCurrentUserDetails("RoleID") == "11") || (GenFx.GetCurrentUserDetails("RoleID") == "12"))
+{
+    @Html.Partial("~/Views/Shared/_NavPartialCustomer.cshtml")
+}
+else
+{
+    @Html.Partial("~/Views/Shared/_NavigationTop.cshtml")
+}

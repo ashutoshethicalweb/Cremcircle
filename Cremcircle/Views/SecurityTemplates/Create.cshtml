@@ -1,0 +1,91 @@
+﻿@model Cremcircle.Models.SecurityTemplateViewModel
+
+@{
+    ViewBag.Title = "Create Security Template";
+    
+}
+
+<div class="mainpanel">
+    <div class="pageheader">
+        <div class="media">
+            <div class="pageicon pull-left">
+                <i class="fa fa-shield"></i>
+            </div>
+            <div class="media-body">
+                <ul class="breadcrumb">
+                    <li><a href=""><i class="glyphicon glyphicon-home"></i></a></li>
+                    <li><a href="@Url.Action("Index", "Home")">Dashboard</a></li>
+                    <li>Security Template</li>
+                </ul>
+                <h4>Create Security Template</h4>
+            </div>
+        </div><!-- media -->
+    </div><!-- pageheader -->
+
+    <div class="contentpanel">
+        <!-- START:// CONTENT GOES HERE -->
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SecurityTemplateName, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.SecurityTemplateName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SecurityTemplateName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="ckbox ckbox-success">
+                                    @Html.EditorFor(model => model.IsActive)
+                                    @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label" })
+                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <div class="multichkbx">
+                                    @Html.LabelFor(model => model.Permissions, htmlAttributes: new { @class = "control-label" })
+                                    <br />
+                                    @for (int i = 0; i < Model.Permissions.Count(); i++)
+                                    {
+                                        <div class="ckbox ckbox-success col-sm-6">
+                                            @Html.EditorFor(model => model.Permissions[i].Checked)
+                                            @Html.LabelFor(model => model.Permissions[i].Checked, @Html.DisplayFor(model => model.Permissions[i].Name).ToString())
+                                            @Html.HiddenFor(model => model.Permissions[i].Name)
+                                            @Html.HiddenFor(model => model.Permissions[i].ID)
+                                        </div>
+                                    }
+                                    @Html.ValidationMessageFor(model => model.Permissions, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="panel-footer">
+                    <button type="submit" class="btn btn-success" id="addorg">Create Security Template</button>
+                </div><!-- panel-footer -->
+            </div>
+            }
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+            <!-- END:// CONTENT GOES HERE -->
+    </div><!-- contentpanel -->
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

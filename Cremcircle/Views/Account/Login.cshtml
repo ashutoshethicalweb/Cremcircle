@@ -1,0 +1,72 @@
+﻿@model Cremcircle.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<section>
+    <div class="panel panel-signin">
+        <div class="panel-body">
+            @*<div class="logo text-center">
+                <img src="@GenFx.GetOrganizationDetails("OrganizationImage")" alt="@GenFx.GetOrganizationDetails("OrganizationName")" style="max-width:300px;" />
+            </div>*@
+            <br />
+            <h4 class="text-center mb5">Sign in to your account</h4>
+            <p class="text-center">@Html.ValidationSummary(true, "", new { @class = "text-danger" })</p>
+
+            <div class="mb30"></div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationMessageFor(model => model.LoginName, "", new { @class = "text-danger" })
+                <div class="input-group mb15">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    @Html.EditorFor(model => model.LoginName, new { htmlAttributes = new { @class = "form-control", placeholder = "Username" } })
+                </div><!-- input-group -->
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                <div class="input-group mb15">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+                </div><!-- input-group -->
+
+                <div class="input-group mb15">
+                    <div class="form-group">
+
+                        <div class="ckbox ckbox-success">
+                           
+                            @Html.EditorFor(model => model.ChkRememberMe)
+                            @Html.LabelFor(model => model.ChkRememberMe, htmlAttributes: new { @class = "control-label" })
+                            @Html.ValidationMessageFor(model => model.ChkRememberMe, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <div class="ckbox ckbox-primary mt10">
+                            &nbsp;
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-success">Sign In <i class="fa fa-angle-right ml5"></i></button>
+                    </div>
+                </div>
+            }
+
+        </div><!-- panel-body -->
+        <div class="panel-footer">
+            <a href="@Url.Action("ForgotPassword")" class="btn btn-primary btn-block">Forgot your password? Click Here Now</a>
+        </div><!-- panel-footer -->
+    </div><!-- panel -->
+    <div style="color:#fff; text-align:center; width:100%; max-width:400px; margin:10px auto; ">
+        &copy; @DateTime.Now.Year  Cremcircle. All rights reserved.<br />Powered By <a href="http://www.ethical.in/" target="_blank" style="color:#fff;">Ethical Web Solutions Pvt. Ltd</a>
+    </div>
+
+</section>
+@section Scripts {
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
